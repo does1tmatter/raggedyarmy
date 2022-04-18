@@ -40,10 +40,10 @@ const { isContractConnected, name, minted, symbol, owner, isSaleOpen, isSaleComp
         </details>
       </div>
       <div class="max-w-[400px] w-full">
-        <details class="font-medium bg-gray-800/[.6] p-4 rounded-lg" open>
-          <summary class="cursor-pointer px-4 py-2">Contract info {{ contractLoading ? '(loading)' : isContractConnected ? '(connected)' : '(disconnected)' }}</summary>
+        <details class="font-medium bg-gray-800/[.6] py-4 px-8 rounded-lg" open>
+          <summary class="cursor-pointer py-2">Contract info {{ contractLoading ? '(loading)' : isContractConnected ? '(connected)' : '(disconnected)' }}</summary>
           <Transition name="slide-fade">
-            <div v-if="isContractConnected && !contractLoading" class="px-4">
+            <div v-if="isContractConnected && !contractLoading">
               contract address:<br>
               <span class="font-light">{{ contractAddress }}</span><br>
               contract name:<br>
@@ -63,10 +63,10 @@ const { isContractConnected, name, minted, symbol, owner, isSaleOpen, isSaleComp
               presale complete:<br>
               <span class="font-light">{{ isPresaleComplete }}</span><br>
             </div>
-            <div v-else-if="contractLoading" class="px-4">
+            <div v-else-if="contractLoading">
               Loading contract data.
             </div>
-            <div v-else-if="!isContractConnected && !contractLoading" class="px-4">
+            <div v-else-if="!isContractConnected && !contractLoading">
               Contract not connected.
             </div>
           </Transition>
