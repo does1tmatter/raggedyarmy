@@ -1,0 +1,94 @@
+import { ref, computed, reactive } from 'vue'
+import { ethers } from 'ethers'
+import { useWallet } from '@/composables/useWallet'
+import { createSharedComposable } from '@vueuse/core'
+import ABI from '@/utils/ABI.json'
+
+export const useContract = createSharedComposable(() => {
+
+  const contractAddress = '0x0FD909133BaBD4aA39Bd8d65456c2eA1B0fD3063'
+
+  const { getProvider } = useWallet()
+
+  const contractLoading = ref(false)
+
+  let contract = reactive({})
+
+  const minted = ref(null)
+  const owner = ref(null)
+  const name = ref(null)
+  const symbol = ref(null)
+  const isSaleOpen = ref(null)
+  const isSaleComplete = ref(null)
+  const isPresaleOpen = ref(null)
+  const isPresaleComplete = ref(null)
+
+  const isContractConnected = computed(() => Boolean(name.value))
+  const progress = computed(() => minted.value * 100 / 10000 || null)
+
+  const connectContract = () => contract = new ethers.Contract(contractAddress, ABI, getProvider())
+
+  const getName = async () => name.value = await contract.name()
+
+  const getSymbol = async () => symbol.value = await contract.symbol()
+
+  const getOwner = async () => owner.value = await contract.owner()
+
+  const getMinted = async () => minted.value = await contract.totalSupply()
+
+  const getSaleOpen = async () => isSaleOpen.value = await contract.isSaleOpen()
+
+  const getSaleComplete = async () => isSaleComplete.value = await contract.isSaleComplete()
+
+  const getPresaleOpen = async () => isPresaleOpen.value = await contract.isPresaleOpen()
+  
+  const getPresaleComplete = async () => isPresaleComplete.value = await contract.isPresaleComplete()
+
+  const loadContractState = async () => {
+    contractLoading.value = true
+    try {
+      connectContract()
+      await getName()
+      await getSymbol()
+      await getMinted()
+      await getOwner()
+      await getSaleOpen()
+      await getSaleComplete()
+      await getPresaleOpen()
+      await getPresaleComplete()
+    } catch (e) {
+      console.log(e)
+      contractLoading.value = false
+    } finally {
+      contractLoading.value = false
+    }
+  }
+
+  const resetContract = () => {
+    name.value = null
+    symbol.value = null
+    owner.value = null
+    minted.value = null
+    isSaleOpen.value = null 
+    isSaleComplete.value = null
+    isPresaleOpen.value = null
+    isPresaleComplete.value = null
+  }
+
+  return {
+    contractLoading,
+    minted,
+    name,
+    symbol,
+    progress,
+    contractAddress,
+    loadContractState,
+    isContractConnected,
+    owner,
+    isSaleOpen,
+    isSaleComplete,
+    isPresaleOpen,
+    isPresaleComplete,
+    resetContract
+  }
+})
