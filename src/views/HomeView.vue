@@ -15,7 +15,7 @@ const { isContractConnected, name, minted, symbol, owner, isSaleOpen, isSaleComp
   <main class="mt-[100px] max-w-[1000px] mx-auto">
     <div class="flex gap-[50px] flex-wrap break-words">
       <div class="max-w-[400px] w-full px-4">
-        <details class="font-medium bg-gray-800/[.6] p-4 rounded-lg" open>
+        <details class="font-medium bg-gray-800/[.6] py-4 px-8 rounded-lg" open>
           <summary class="cursor-pointer py-2">User info {{ userLoading ? '(loading)' : isAuthenticated ? '(connected)' : '(disconnected)' }}</summary>
           <Transition name="slide-fade">
             <div v-if="isAuthenticated">
