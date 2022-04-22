@@ -25,7 +25,6 @@ const bgStyle = computed(() => ({
   <div class="min-h-screen bg-no-repeat" :style="bgStyle">
     <UserProfile />
     <main class="mt-[40px] max-w-[1280px] mx-auto px-4">
-      {{ scroll }}
       <ConnectionData />
     </main>
   </div>
