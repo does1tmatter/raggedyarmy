@@ -1,5 +1,5 @@
 <script setup>
-import { useScroll } from '@vueuse/core'
+import { useWindowScroll } from '@vueuse/core'
 import { useUtils } from '@/composables/useUtils'
 import ConnectionData from '@/components/ConnectionData.vue'
 import UserProfile from '@/components/UserProfile.vue'
@@ -7,7 +7,7 @@ import bg1 from '@/assets/img/bg1.jpg'
 import bg2 from '@/assets/img/bg2.jpg'
 import bg3 from '@/assets/img/bg3.jpg'
 
-const scroll = useScroll(window)
+const scroll = useWindowScroll()
 const { randomNumber } = useUtils()
 
 const bgArray = [bg1, bg2, bg3]
