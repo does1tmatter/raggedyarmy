@@ -1,4 +1,4 @@
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive } from 'vue'
 import { createSharedComposable } from '@vueuse/core'
 import { ethers } from 'ethers'
 

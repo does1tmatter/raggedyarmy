@@ -22,27 +22,31 @@ export const useUser = createSharedComposable(() => {
 
 
   const loadUserData = async (accounts) => {
-    if (accounts.length === 0) {
-      const ch = await getChainId()
-      return ({
-        address: null,
-        ensName: null,
-        username: null,
-        balance: null,
-        chain: ch
-      })
-    } else {
-      const ens = await lookupAddress(accounts[0])
-      const ensAv = await getAvatar(ens || '')
-      const bal = await getBalance(accounts[0])
-      const ch = await getChainId()
-      return ({
-        address: accounts[0],
-        ensName: ens,
-        eAvatar: ensAv,
-        balance: parseFloat(formatBalance(bal)),
-        chain: ch
-      })
+    try {
+      if (accounts.length === 0) {
+        const ch = await getChainId()
+        return ({
+          address: null,
+          ensName: null,
+          username: null,
+          balance: null,
+          chain: ch
+        })
+      } else {
+        const ens = await lookupAddress(accounts[0])
+        const ensAv = await getAvatar(ens || '')
+        const bal = await getBalance(accounts[0])
+        const ch = await getChainId()
+        return ({
+          address: accounts[0],
+          ensName: ens,
+          eAvatar: ensAv,
+          balance: parseFloat(formatBalance(bal)),
+          chain: ch
+        })
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -52,6 +56,7 @@ export const useUser = createSharedComposable(() => {
     ensAvatar.value = data.eAvatar
     balance.value = data.balance
     chain.value = data.chain
+    console.log(address.value)
   }
   
   const loadConnectedUser = async () => {
@@ -70,6 +75,7 @@ export const useUser = createSharedComposable(() => {
   const resetUser = () => {
     address.value = null,
     ensName.value = null,
+    ensAvatar.value = null,
     username.value = null,
     balance.value = null
   }
