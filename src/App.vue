@@ -66,18 +66,18 @@ onUnmounted(() => {
 </script>
 
 <template>
+  <Transition name="slide-profile">
+    <div v-if="!isNetwork" class="text-center bg-redish text-[10px] uppercase">
+      wrong network detected. please switch to ethereum mainnet
+    </div>
+  </Transition>
   <RouterView />
 </template>
 
 <style>
 @import '@/assets/base.css';
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
-  font-weight: normal;
+html {
+  background: #181818;
+  color: #FFFFFF;
 }
-
 </style>

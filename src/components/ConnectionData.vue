@@ -14,35 +14,10 @@ const { isContractConnected, name, minted, symbol, owner, isSaleOpen, isSaleComp
 <template>
   <div class="flex gap-[50px] flex-wrap break-words">
       <div class="max-w-[400px] w-full">
-        <details class="font-medium bg-gray-800/[.6] py-4 px-8 rounded-lg" open>
-          <summary class="cursor-pointer py-2">User info {{ userLoading ? '(loading)' : isAuthenticated ? '(connected)' : '(disconnected)' }}</summary>
+        <details class="font-medium bg-redish-500 rounded-lg tracking-tighter">
+          <summary class="cursor-pointer py-4 text-sunflower bg-redish-300 rounded-md pl-4">Contract info {{ contractLoading ? '(loading)' : isContractConnected ? '(connected)' : '(disconnected)' }}</summary>
           <Transition name="slide-fade">
-            <div v-if="isAuthenticated">
-              address: <br>
-              <span class="font-light">{{ address }}</span><br>
-              ENS name: <br>
-              <span class="font-light">{{ ensName ? 'Resolves to ' + ensName : 'Doesnt resolve' }}</span><br>
-              username: <br>
-              <span class="font-light">{{ username }}</span><br>
-              balance:<br>
-              <span class="font-light">{{ balance }} ETH</span><br>
-              chain id: <br>
-              <span class="font-light">{{ chain }}</span><br>
-            </div>
-            <div v-else-if="userLoading">
-              Loading user data.
-            </div>
-            <div v-else-if="!isAuthenticated && !userLoading">
-                User is not connected.
-            </div>
-          </Transition>
-        </details>
-      </div>
-      <div class="max-w-[400px] w-full">
-        <details class="font-medium bg-gray-800/[.6] py-4 px-8 rounded-lg">
-          <summary class="cursor-pointer py-2">Contract info {{ contractLoading ? '(loading)' : isContractConnected ? '(connected)' : '(disconnected)' }}</summary>
-          <Transition name="slide-fade">
-            <div v-if="isContractConnected && !contractLoading">
+            <div v-if="isContractConnected && !contractLoading" class="px-4 py-2">
               contract address:<br>
               <span class="font-light">{{ contractAddress }}</span><br>
               contract name:<br>

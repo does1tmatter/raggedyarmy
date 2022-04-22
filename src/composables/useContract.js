@@ -36,6 +36,8 @@ export const useContract = createSharedComposable(() => {
 
   const getMinted = async () => minted.value = await contract.totalSupply()
 
+  const getOwnedTokens = async (address) => await contract.balanceOf(address)
+
   const getSaleOpen = async () => isSaleOpen.value = await contract.isSaleOpen()
 
   const getSaleComplete = async () => isSaleComplete.value = await contract.isSaleComplete()
@@ -89,6 +91,7 @@ export const useContract = createSharedComposable(() => {
     isSaleComplete,
     isPresaleOpen,
     isPresaleComplete,
-    resetContract
+    resetContract,
+    getOwnedTokens
   }
 })

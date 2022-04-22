@@ -1,10 +1,12 @@
 import { ref, computed } from 'vue'
 import { useWallet } from '@/composables/useWallet'
+import { useContract } from '@/composables/useContract'
 import { useUtils } from '@/composables/useUtils'
 import { createSharedComposable } from '@vueuse/core'
 
 export const useUser = createSharedComposable(() => {
   const { getChainId, getBalance, lookupAddress, getCurrentUser, requestAccounts, getAvatar } = useWallet()
+  const { getOwnedTokens } = useContract()
   const { formatBalance, sliceAddress } = useUtils()
 
   const address = ref(null)
@@ -13,6 +15,7 @@ export const useUser = createSharedComposable(() => {
   const username = computed(() => ensName.value || sliceAddress(address.value))
   const balance = ref(null)
   const chain = ref(null)
+  const ownedTokens = ref(null)
 
   const userLoading = ref(false)
   const isNetwork = computed(() => Boolean(chain.value === '0x1'))
@@ -37,12 +40,14 @@ export const useUser = createSharedComposable(() => {
         const ensAv = await getAvatar(ens || '')
         const bal = await getBalance(accounts[0])
         const ch = await getChainId()
+        const ownd = await getOwnedTokens(accounts[0])
         return ({
           address: accounts[0],
           ensName: ens,
           eAvatar: ensAv,
           balance: parseFloat(formatBalance(bal)),
-          chain: ch
+          chain: ch,
+          ownedCount: ownd
         })
       }
     } catch (error) {
@@ -56,7 +61,7 @@ export const useUser = createSharedComposable(() => {
     ensAvatar.value = data.eAvatar
     balance.value = data.balance
     chain.value = data.chain
-    console.log(address.value)
+    ownedTokens.value = data.ownedCount
   }
   
   const loadConnectedUser = async () => {
@@ -73,11 +78,12 @@ export const useUser = createSharedComposable(() => {
   const detectChain = () => getChainId().then(res => chain.value = res)
 
   const resetUser = () => {
-    address.value = null,
-    ensName.value = null,
-    ensAvatar.value = null,
-    username.value = null,
+    address.value = null
+    ensName.value = null
+    ensAvatar.value = null
+    username.value = null
     balance.value = null
+    ownedTokens.value = null
   }
 
   const connectUser = async () => {
@@ -106,6 +112,7 @@ export const useUser = createSharedComposable(() => {
     detectChain,
     resetUser,
     connectUser,
-    loadUserData
+    loadUserData,
+    ownedTokens
   }
 })

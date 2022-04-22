@@ -12,9 +12,12 @@ export function useUtils () {
     return parseFloat(number).toFixed(4)
   }
 
+  const randomNumber = (max) => Math.floor(Math.random() * max) + 1
+
   return {
     isMetaMaskInstalled,
     sliceAddress,
-    formatBalance
+    formatBalance,
+    randomNumber
   }
 }
