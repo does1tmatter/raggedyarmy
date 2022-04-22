@@ -3,7 +3,6 @@ import { computed } from 'vue'
 import { useScroll } from '@vueuse/core'
 import { useUtils } from '@/composables/useUtils'
 import ConnectionData from '@/components/ConnectionData.vue'
-import UserProfile from '@/components/UserProfile.vue'
 import bg1 from '@/assets/img/bg1.jpg'
 import bg2 from '@/assets/img/bg2.jpg'
 import bg3 from '@/assets/img/bg3.jpg'
@@ -22,9 +21,8 @@ const bgStyle = computed(() => ({
 </script>
 
 <template>
-  <div class="min-h-screen bg-no-repeat" :style="bgStyle">
-    <UserProfile />
-    <main class="mt-[40px] max-w-[1280px] mx-auto px-4">
+  <div class="min-h-screen bg-no-repeat transition-none" :style="bgStyle">
+    <main class="pt-[20vh] max-w-[1280px] mx-auto px-4">
       <ConnectionData />
     </main>
   </div>
