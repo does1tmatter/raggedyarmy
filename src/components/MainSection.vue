@@ -10,8 +10,8 @@ import bg3 from '@/assets/img/bg3.jpg'
 const scroll = useScroll(window)
 const { randomNumber } = useUtils()
 
-const bgArray = [null, bg1, bg2, bg3]
-const randomBackground = bgArray[randomNumber(3)]
+const bgArray = [bg1, bg2, bg3]
+const randomBackground = bgArray[randomNumber(3) - 1]
 </script>
 
 <template>
