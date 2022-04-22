@@ -5,7 +5,6 @@ import { useWallet } from '@/composables/useWallet.js'
 import { useUser } from '@/composables/useUser.js'
 import { useUtils } from '@/composables/useUtils.js'
 import { useContract } from '@/composables/useContract.js'
-import UserProfile from './components/UserProfile.vue'
 
 const { connectProvider, provider } = useWallet()
 const { isMetaMaskInstalled } = useUtils()
@@ -67,7 +66,6 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <UserProfile class="mt-[20px]" />
   <RouterView />
 </template>
 

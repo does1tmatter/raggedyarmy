@@ -24,6 +24,8 @@ export const useWallet = createSharedComposable(() => {
   
   const lookupAddress = async (address) => await connection.lookupAddress(address)
 
+  const getAvatar = async (ensName) => await connection.getAvatar(ensName)
+
   const request = async (payload) => await provider.value.request(payload)
 
   const switchNetwork = async () => await provider.value.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: '0x1' }] })
@@ -45,6 +47,7 @@ export const useWallet = createSharedComposable(() => {
     getCurrentUser,
     getBalance,
     lookupAddress,
+    getAvatar,
     request,
     switchNetwork,
     getChainId,

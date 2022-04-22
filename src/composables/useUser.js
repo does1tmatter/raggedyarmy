@@ -4,12 +4,13 @@ import { useUtils } from '@/composables/useUtils'
 import { createSharedComposable } from '@vueuse/core'
 
 export const useUser = createSharedComposable(() => {
-  const { getChainId, getBalance, lookupAddress, getCurrentUser, requestAccounts } = useWallet()
-  const { formatBalance } = useUtils()
+  const { getChainId, getBalance, lookupAddress, getCurrentUser, requestAccounts, getAvatar } = useWallet()
+  const { formatBalance, sliceAddress } = useUtils()
 
   const address = ref(null)
   const ensName = ref(null)
-  const username = computed(() => ensName.value || address.value)
+  const ensAvatar = ref(null)
+  const username = computed(() => ensName.value || sliceAddress(address.value))
   const balance = ref(null)
   const chain = ref(null)
 
@@ -32,20 +33,23 @@ export const useUser = createSharedComposable(() => {
       })
     } else {
       const ens = await lookupAddress(accounts[0])
+      const ensAv = await getAvatar(ens || '')
       const bal = await getBalance(accounts[0])
       const ch = await getChainId()
       return ({
         address: accounts[0],
         ensName: ens,
+        eAvatar: ensAv,
         balance: parseFloat(formatBalance(bal)),
         chain: ch
       })
-      }
+    }
   }
 
   const setUserData = (data) => {
     address.value = data.address
     ensName.value = data.ensName
+    ensAvatar.value = data.eAvatar
     balance.value = data.balance
     chain.value = data.chain
   }
@@ -84,6 +88,7 @@ export const useUser = createSharedComposable(() => {
   return {
     address,
     ensName,
+    ensAvatar,
     username,
     balance,
     chain,
