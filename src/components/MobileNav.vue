@@ -24,9 +24,9 @@ const menuOpen = ref(false)
               v-if="!isAuthenticated"
               :disabled="userLoading || !isNetwork"
               @click="connectUser"
-              class="disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-redish-600 disabled:hover:text-redish-300 bg-redish-600 text-redish-300 rounded-lg p-[10px] hover:bg-redish hover:text-white transition-all"
+              class="disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:text-redish-300 bg-redish rounded-lg p-[10px] transition-all"
             >
-              Connect
+              {{ userLoading ? 'Connecting' : 'Connect' }}
             </button>
           </Transition>
           <Transition name="fadeout">
