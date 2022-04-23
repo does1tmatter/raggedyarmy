@@ -34,7 +34,7 @@ const toggleUserData = () => isAuthenticated.value ? openUserData.value = !openU
       </span>
     </div>
     <Transition name="slide-profile">
-      <div v-if="openUserData" class="z-50 absolute w-full mt-2 bg-redish-400 p-2 rounded-md text-[11px] uppercase leading-none flex justify-between whitespace-nowrap">
+      <div v-if="openUserData && isAuthenticated" class="z-50 absolute w-full mt-2 bg-redish-400 p-2 rounded-md text-[11px] uppercase leading-none flex justify-between whitespace-nowrap">
         <div class="text-white">
           <div>balance:</div>
           <div class="mt-2">WL balance:</div>
