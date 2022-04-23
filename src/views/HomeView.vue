@@ -2,12 +2,12 @@
 import MainSection from '@/components/MainSection.vue'
 import AngelSection from '@/components/AngelSection.vue'
 import PreSection from '@/components/PreSection.vue'
-import UserProfile from '@/components/UserProfile.vue'
+import FullNav from '@/components/FullNav.vue'
 import MintingContainer from '@/components/MintingContainer.vue'
 </script>
 
 <template>
-  <UserProfile />
+  <FullNav />
   <MainSection />
   <MintingContainer />
   <AngelSection />

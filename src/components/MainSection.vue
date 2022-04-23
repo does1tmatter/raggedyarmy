@@ -1,8 +1,7 @@
 <script setup>
 import { computed, onMounted } from 'vue'
 import { useScroll } from '@vueuse/core'
-import { useUtils } from '@/composables/useUtils'
-import { useAnimation } from '@/composables/useAnimation'
+import { useAnimation, useUtils } from '@/composables/'
 import bg1 from '@/assets/img/bg1.jpg'
 import bg2 from '@/assets/img/bg2.jpg'
 

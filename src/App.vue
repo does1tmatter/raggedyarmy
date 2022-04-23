@@ -1,10 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import { onMounted, onUnmounted } from 'vue'
-import { useWallet } from '@/composables/useWallet.js'
-import { useUser } from '@/composables/useUser.js'
-import { useUtils } from '@/composables/useUtils.js'
-import { useContract } from '@/composables/useContract.js'
+import { useWallet, useContract, useUser, useUtils } from '@/composables/'
 
 const { connectProvider, provider } = useWallet()
 const { isMetaMaskInstalled } = useUtils()

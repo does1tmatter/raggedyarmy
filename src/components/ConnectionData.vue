@@ -1,8 +1,5 @@
 <script setup>
-import { useWallet } from '@/composables/useWallet.js'
-import { useContract } from '@/composables/useContract.js'
-import { useUtils } from '@/composables/useUtils.js'
-import { useUser } from '@/composables/useUser.js'
+import { useUser, useContract, useWallet, useUtils } from '@/composables/'
 
 const { requestAccounts, getChainId } = useWallet()
 const { isMetaMaskInstalled, loader } = useUtils()

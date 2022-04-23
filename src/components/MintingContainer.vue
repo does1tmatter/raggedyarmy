@@ -1,7 +1,6 @@
 <script setup>
 import { useScroll } from '@vueuse/core'
-import { useContract } from '@/composables/useContract'
-import { useUser } from '@/composables/useUser'
+import { useContract, useUser } from '@/composables/'
 import ConnectionData from '@/components/ConnectionData.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import bg from '@/assets/img/mint.jpg'
