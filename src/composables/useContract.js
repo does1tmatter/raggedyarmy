@@ -10,7 +10,7 @@ export const useContract = createSharedComposable(() => {
   const contractAddress = '0x0FD909133BaBD4aA39Bd8d65456c2eA1B0fD3063'
   const WLContractAddress = '0x94a8792c012767AeDFD17473c854c920456D64aE'
 
-  const { getProvider } = useWallet()
+  const { getProvider, getSigner } = useWallet()
 
   const contractLoading = ref(false)
 
@@ -25,12 +25,14 @@ export const useContract = createSharedComposable(() => {
   const isSaleComplete = ref(null)
   const isPresaleOpen = ref(null)
   const isPresaleComplete = ref(null)
-  const WLBalance = ref(null)
+  const WLBalance = ref(0)
+  const salePrice = 0.077
+  const WLPrice = 0.03
 
   const isContractConnected = computed(() => Boolean(name.value))
   const progress = computed(() => minted.value * 100 / 10000 || null)
 
-  const connectContract = () => contract = new ethers.Contract(contractAddress, ABI, getProvider())
+  const connectContract = (_who) => contract = new ethers.Contract(contractAddress, ABI, _who)
 
   const connectWLContract = (_address, _abi) => wlContract = new ethers.Contract(_address, _abi, getProvider())
 
@@ -54,10 +56,20 @@ export const useContract = createSharedComposable(() => {
   
   const getPresaleComplete = async () => isPresaleComplete.value = await contract.isPresaleComplete()
 
+  const mintPublic = async (count, overrides) => await contract.mintCollectibles(count, overrides)
+
+  const mintPresale = async (count, bool, overrides) => await contract.mintPresaleCollectibles(count, bool, overrides)
+
+  const connectSigner = (_signer) => contract.connect(_signer)
+  
+  const contractInstance = () => contract
+
+  const parseEther = (_num) => ethers.utils.parseEther(_num)
+
   const loadContractState = async () => {
     contractLoading.value = true
     try {
-      connectContract()
+      connectContract(getProvider())
       connectWLContract(WLContractAddress, WLABI)
       await getName()
       await getSymbol()
@@ -103,6 +115,14 @@ export const useContract = createSharedComposable(() => {
     resetContract,
     getOwnedTokens,
     getWLBalance,
-    WLBalance
+    WLBalance,
+    salePrice,
+    WLPrice,
+    connectSigner,
+    contractInstance,
+    connectContract,
+    mintPublic,
+    mintPresale,
+    parseEther
   }
 })

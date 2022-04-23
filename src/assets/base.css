@@ -59,3 +59,7 @@
 .fadeout-leave-to {
   opacity: 0;
 }
+
+.burn {
+  mix-blend-mode: color-dodge !important;
+}

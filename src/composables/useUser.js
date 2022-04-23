@@ -5,8 +5,8 @@ import { useUtils } from '@/composables/useUtils'
 import { createSharedComposable } from '@vueuse/core'
 
 export const useUser = createSharedComposable(() => {
-  const { getChainId, getBalance, lookupAddress, getCurrentUser, requestAccounts, getAvatar } = useWallet()
-  const { getOwnedTokens, getWLBalance } = useContract()
+  const { getChainId, getBalance, lookupAddress, getCurrentUser, requestAccounts, getAvatar, getSigner } = useWallet()
+  const { getOwnedTokens, getWLBalance, contractInstance, connectContract, resetSigner } = useContract()
   const { formatBalance, sliceAddress } = useUtils()
 
   const address = ref(null)
@@ -42,6 +42,7 @@ export const useUser = createSharedComposable(() => {
         const ch = await getChainId()
         const ownd = await getOwnedTokens(accounts[0])
         await getWLBalance(accounts[0])
+        connectContract(getSigner())
         return ({
           address: accounts[0],
           ensName: ens,
@@ -82,7 +83,6 @@ export const useUser = createSharedComposable(() => {
     address.value = null
     ensName.value = null
     ensAvatar.value = null
-    username.value = null
     balance.value = null
     ownedTokens.value = null
   }

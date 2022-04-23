@@ -34,7 +34,8 @@ module.exports = {
         }
       },
       fontFamily: {
-        bitter: 'Bitter'
+        bitter: 'Bitter',
+        bangers: 'Bangers'
       }
     },
   },

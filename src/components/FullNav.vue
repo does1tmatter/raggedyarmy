@@ -36,10 +36,10 @@ const isScrolled = computed(() => Boolean(scroll.y.value > 100))
           </Transition>
         </div>
       </div>
-      <div class="cursor-pointer flex gap-6">
-        <a href="#home">Home</a>
-        <a href="#mint">Mint</a>
-        <a href="#roadmap">Roadmap</a>
+      <div class="cursor-pointer flex gap-6 font-bold uppercase">
+        <a href="#home" class="hover:text-redish-300 transition-all">Home</a>
+        <a href="#mint" class="hover:text-redish-300 transition-all">Mint</a>
+        <a href="#roadmap" class="hover:text-redish-300 transition-all">Roadmap</a>
       </div>
     </div>
   </header>
