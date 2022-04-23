@@ -9,6 +9,7 @@ import { useContract } from '@/composables/useContract.js'
 const { switchNetwork } = useWallet()
 const { isMetaMaskInstalled, sliceAddress } = useUtils()
 const { isNetwork, username, ensAvatar, isAuthenticated, userLoading, connectUser, address, balance, ownedTokens } = useUser()
+const { WLBalance } = useContract()
 
 const scroll = useScroll(window)
 const isScrolled = computed(() => Boolean(scroll.y.value > 100))
@@ -47,10 +48,12 @@ const toggleUserData = () => isAuthenticated.value ? openUserData.value = !openU
             <div v-if="openUserData" class="z-50 absolute w-full mt-2 bg-redish-400 p-2 rounded-md text-[11px] uppercase leading-none flex justify-between whitespace-nowrap">
               <div class="text-white">
                 <div>balance:</div>
-                <div class="mt-2">owned tokens</div>
+                <div class="mt-2">WL balance:</div>
+                <div class="mt-2">owned dolls:</div>
               </div>
               <div class="text-sunflower text-right">
                 <div>{{ balance }} eth</div>
+                <div class="mt-2">{{ WLBalance }}</div>
                 <div class="mt-2">{{ ownedTokens }}</div>
               </div>
             </div>
