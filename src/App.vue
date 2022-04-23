@@ -64,7 +64,7 @@ onUnmounted(() => {
 
 <template>
   <Transition name="slide-profile">
-    <div v-if="!isNetwork" class="fixed top-0 left-0 w-full z-[100] text-center bg-redish text-[10px] uppercase">
+    <div v-if="!isNetwork && isMetaMaskInstalled" class="fixed top-0 left-0 w-full z-[100] text-center bg-redish text-[10px] uppercase">
       wrong network detected. please switch to ethereum mainnet
     </div>
   </Transition>

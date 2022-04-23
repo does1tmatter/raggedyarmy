@@ -22,15 +22,15 @@ const menuOpen = ref(false)
           <Transition name="fadeout">
             <button
               v-if="!isAuthenticated"
-              :disabled="userLoading || !isNetwork"
+              :disabled="userLoading || !isNetwork || !isMetaMaskInstalled"
               @click="connectUser"
-              class="disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:text-redish-300 bg-redish rounded-lg p-[10px] transition-all"
+              class="disabled:cursor-not-allowed disabled:opacity-60 bg-redish rounded-lg p-[10px] transition-all"
             >
-              {{ userLoading ? 'Connecting' : 'Connect' }}
+              {{ isMetaMaskInstalled ? userLoading ? 'Connecting' : 'Connect' : 'No metamask' }}
             </button>
           </Transition>
           <Transition name="fadeout">
-            <button v-if="!isNetwork" class="p-[10px] bg-redish-600 text-redish-300 rounded-lg ml-4 hover:bg-redish hover:text-white transition-all" @click="switchNetwork">
+            <button v-if="!isNetwork && isMetaMaskInstalled" class="p-[10px] bg-redish-600 text-redish-300 rounded-lg ml-4 hover:bg-redish hover:text-white transition-all" @click="switchNetwork">
               Switch Network
             </button>
           </Transition>

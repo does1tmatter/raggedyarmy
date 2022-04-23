@@ -22,7 +22,7 @@ const isScrolled = computed(() => Boolean(scroll.y.value > 100))
           <Transition name="fadeout">
             <button
               v-if="!isAuthenticated"
-              :disabled="userLoading || !isNetwork"
+              :disabled="userLoading || !isNetwork || !isMetaMaskInstalled"
               @click="connectUser"
               class="disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-redish-600 disabled:hover:text-redish-300 bg-redish-600 text-redish-300 rounded-lg p-[10px] hover:bg-redish hover:text-white transition-all"
             >
@@ -30,7 +30,7 @@ const isScrolled = computed(() => Boolean(scroll.y.value > 100))
             </button>
           </Transition>
           <Transition name="fadeout">
-            <button v-if="!isNetwork" class="p-[10px] bg-redish-600 text-redish-300 rounded-lg ml-4 hover:bg-redish hover:text-white transition-all" @click="switchNetwork">
+            <button v-if="!isNetwork && isMetaMaskInstalled" class="p-[10px] bg-redish-600 text-redish-300 rounded-lg ml-4 hover:bg-redish hover:text-white transition-all" @click="switchNetwork">
               Switch Network
             </button>
           </Transition>
