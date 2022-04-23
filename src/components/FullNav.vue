@@ -14,7 +14,7 @@ const isScrolled = computed(() => Boolean(scroll.y.value > 100))
 </script>
 
 <template>
-  <header :class="isScrolled ? 'py-4 transition-all bg-redish-600 bg-opacity-80 fixed top-0 left-0 w-full backdrop-blur-sm z-40' : 'py-8 transition-all bg-redish-600 bg-opacity-10 fixed top-0 left-0 w-full backdrop-blur-sm z-40'">
+  <header :class="isScrolled ? 'hidden md:block py-4 transition-all bg-redish-600 bg-opacity-80 fixed top-0 left-0 w-full backdrop-blur-sm z-40' : 'hidden md:block py-8 transition-all bg-redish-600 bg-opacity-10 fixed top-0 left-0 w-full backdrop-blur-sm z-40'">
     <div class="max-w-[1280px] mx-auto px-4 flex justify-between items-center">
       <div class="flex gap-4 items-center">
         <UserProfile />

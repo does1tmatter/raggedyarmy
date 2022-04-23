@@ -23,7 +23,7 @@ const disableWL = computed(() => Boolean(parseFloat(WLBalance.value) === 0))
     backgroundSize: 'cover',
     backgroundImage: `url(${bg})`,
   }">
-    <div class="font-black text-[69px] text-right leading-[0.75] pointer-events-none max-w-[400px] mx-auto">
+    <div class="font-black text-[10vw] md:text-[69px] text-right leading-[0.75] pointer-events-none max-w-[400px] mx-auto">
       <div class="text-sunflower">MINT</div>
       <div class="text-redish-300">RAGDOLL</div>
     </div>

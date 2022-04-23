@@ -60,6 +60,10 @@
   opacity: 0;
 }
 
-.burn {
+.dodge {
   mix-blend-mode: color-dodge !important;
+}
+
+.burn {
+  mix-blend-mode: hard-light !important;
 }

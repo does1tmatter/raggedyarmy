@@ -29,12 +29,12 @@ onMounted(() => {
   }">
     <main class="pt-[35vh] max-w-[1280px] mx-auto px-4 z-0">
       <div class="max-w-[600px] ml-auto">
-        <div class="font-black md:text-[69px] text-left pointer-events-none headline burn leading-[0.75]">
+        <div class="font-black text-[10vw] md:text-[69px] text-left pointer-events-none headline dodge leading-[0.75]">
           <span class="text-sunflower">RAGGEDY</span>
           <span class="text-redish-300">ARMY</span>
         </div>
         <div class="bg-redish/[.6] rounded-tr-3xl rounded-bl-3xl p-6 font-bangers font-medium text-[30px] text-justify leading-none clip">
-          <p>The Raggedy Army consists of <span class="text-redish-300 burn">7,777</span> <span class="text-sunflower">Rag Dolls</span> that were given life to bring balance to the Aethirverse.</p>
+          <p>The Raggedy Army consists of <span class="text-redish-300 dodge">7,777</span> <span class="text-sunflower">Rag Dolls</span> that were given life to bring balance to the Aethirverse.</p>
           <p class="mt-2">They live alongside many types of dangerous creatures and do not serve Good or Evil.</p>
         </div>
       </div>

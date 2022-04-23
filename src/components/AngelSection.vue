@@ -7,7 +7,7 @@ import angel from '@/assets/img/angel.jpg'
     backgroundImage: `url(${angel})`,
     backgroundPosition: 'top' 
   }">
-    <div class="font-black md:text-[80px] text-right mix-blend-color-burn pointer-events-none">
+    <div class="font-black text-[14vw] md:text-[80px] text-right mix-blend-color-dodge pointer-events-none">
         <span class="text-redish-300">ROAD</span>
         <span class="text-sunflower">MAP</span>
       </div>

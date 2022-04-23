@@ -3,8 +3,8 @@ import pretransform from '@/assets/img/pretransform.jpg'
 </script>
 
 <template>
-  <div class="h-[550px] bg-fixed bg-cover" :style="{
+  <div class="h-[40vh] bg-fixed bg-cover" :style="{
     backgroundImage: `url(${pretransform})`,
-    backgroundPosition: 'top' 
+    backgroundPosition: '0 300px' 
   }"></div>
 </template>
