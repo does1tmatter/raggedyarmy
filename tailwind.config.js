@@ -32,6 +32,9 @@ module.exports = {
           800: '#5A4C09',
           900: '#272104'
         }
+      },
+      fontFamily: {
+        bitter: 'Bitter'
       }
     },
   },

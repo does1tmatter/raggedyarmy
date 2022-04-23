@@ -2,6 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+
+::-webkit-scrollbar {
+  background: #440909;
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #440909;
+}
+::-webkit-scrollbar-thumb {
+  background: #BE1818;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E74141;
+}
+
 .slide-fade-enter-active {
   transition: all 0.1s cubic-bezier(1, 0.5, 0.8, 1);
   transition-delay: 0.1s;

@@ -12,9 +12,9 @@ const { isContractConnected, name, minted, symbol, owner, isSaleOpen, isSaleComp
 </script>
 
 <template>
-  <div class="flex gap-[50px] justify-end flex-wrap break-words">
+  <div class="flex gap-[50px] flex-wrap break-words">
       <div class="max-w-[400px] w-full">
-        <details class="font-medium bg-redish-500 rounded-lg tracking-tighter">
+        <details class="font-medium bg-redish-500 rounded-lg tracking-tighter" open>
           <summary class="cursor-pointer py-4 text-sunflower bg-redish-300 hover:bg-redish-400 transition-all rounded-md pl-4">Contract info {{ contractLoading ? '(loading)' : isContractConnected ? '(connected)' : '(disconnected)' }}</summary>
           <Transition name="slide-fade">
             <div v-if="isContractConnected && !contractLoading" class="px-4 py-2">
@@ -37,10 +37,10 @@ const { isContractConnected, name, minted, symbol, owner, isSaleOpen, isSaleComp
               presale complete:<br>
               <span class="font-light">{{ isPresaleComplete }}</span><br>
             </div>
-            <div v-else-if="contractLoading">
+            <div v-else-if="contractLoading" class="px-4 py-2">
               Loading contract data.
             </div>
-            <div v-else-if="!isContractConnected && !contractLoading">
+            <div v-else-if="!isContractConnected && !contractLoading" class="px-4 py-2">
               Contract not connected.
             </div>
           </Transition>

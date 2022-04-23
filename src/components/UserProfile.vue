@@ -24,7 +24,7 @@ const toggleUserData = () => isAuthenticated.value ? openUserData.value = !openU
 </script>
 
 <template>
-  <header :class="isScrolled ? 'py-4 transition-all bg-redish-600 bg-opacity-80 fixed top-0 left-0 w-full backdrop-blur-sm' : 'py-8 transition-all bg-redish-600 bg-opacity-20 fixed top-0 left-0 w-full backdrop-blur-sm'">
+  <header :class="isScrolled ? 'py-4 transition-all bg-redish-600 bg-opacity-80 fixed top-0 left-0 w-full backdrop-blur-sm z-40' : 'py-8 transition-all bg-redish-600 bg-opacity-10 fixed top-0 left-0 w-full backdrop-blur-sm z-40'">
     <div class="max-w-[1280px] mx-auto px-4 flex justify-between items-center">
       <div class="flex gap-4 items-center">
         <div class="relative text-white">
@@ -74,8 +74,10 @@ const toggleUserData = () => isAuthenticated.value ? openUserData.value = !openU
           </Transition>
         </div>
       </div>
-      <div class="cursor-pointer">
-        Menu
+      <div class="cursor-pointer flex gap-6">
+        <a href="#home">Home</a>
+        <a href="#mint">Mint</a>
+        <a href="#roadmap">Roadmap</a>
       </div>
     </div>
   </header>
