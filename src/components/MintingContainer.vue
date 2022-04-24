@@ -51,7 +51,7 @@ const success = () => {
   }, 3000)
 }
 </script>
-
+  
 <template>
   <div id="mint" class="h-[1000px] bg-[#181818] pt-[250px] px-4 bg-center bg-no-repeat bg-blend-soft-light" :style="{
     backgroundSize: 'cover',
@@ -67,11 +67,11 @@ const success = () => {
           <div class="text-[30px] uppercase font-bold leading-none text-center">Loading contract</div>
           <div class="text-center text-redish-200">Please wait</div>
         </template>
-        <template v-if="!contractLoading && !contractLoaded">
+        <template v-else-if="!contractLoading && !contractLoaded">
           <div class="text-[30px] uppercase font-bold leading-none text-center">Error</div>
           <div class="text-center text-redish-200">Could not connect to contract.</div>
         </template>
-        <template v-if="!isPresaleOpen && !isPresaleComplete && contractLoaded">
+        <template v-else-if="!isPresaleOpen && !isPresaleComplete && contractLoaded">
           <div class="text-[30px] uppercase font-bold leading-none text-center">Presale</div>
           <div class="text-center mt-4">
             <div class="w-full max-w-[200px] mx-auto flex justify-between">
@@ -89,9 +89,23 @@ const success = () => {
               <label for="wltokens" :class="disableWL ? 'cursor-not-allowed' : 'cursor-pointer'">Use WL Tokens</label>
             </div>
             <div class="font-black text-[30px] flex justify-center gap-6 mt-2">
-              <button class="cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg" @click="isMinCount ? '' : count--">-</button>
+              <button
+                :class="
+                  isMinCount ? 'cursor-not-allowed px-4 border border-redish-300 transition-all rounded-lg' : 'cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg'
+                "
+                @click="isMinCount ? '' : count--"
+              >
+                -
+              </button>
               <span>{{ count }}</span>
-              <button class="cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg" @click="isMaxCount ? '' : count++">+</button>
+              <button
+                :class="
+                  isMaxCount ? 'cursor-not-allowed px-4 border border-redish-300 transition-all rounded-lg' : 'cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg'
+                "
+                @click="isMaxCount ? '' : count++"
+              >
+                +
+              </button>
             </div>
             <button
               :disabled="!isAuthenticated || !isNetwork || isMinting"
@@ -130,9 +144,18 @@ const success = () => {
               </div>
             </div>
             <div class="font-black text-[30px] flex justify-center gap-6 mt-2">
-              <button class="cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg" @click="isMinCount ? '' : count--">-</button>
+              <button
+                :class="
+                  isMinCount ? 'cursor-not-allowed px-4 border border-redish-300 transition-all rounded-lg' : 'cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg'
+                "
+                @click="isMinCount ? '' : count--"
+              >
+                -
+              </button>
               <span>{{ count }}</span>
-              <button class="cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg" @click="isMaxCount ? '' : count++">+</button>
+              <button class="cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg" @click="count++">
+                +
+              </button>
             </div>
             <button
               :disabled="!isAuthenticated || !isNetwork || isMinting"
@@ -163,13 +186,13 @@ const success = () => {
         </template>
       </div>
     </template>
-    <template v-if="isMetaMaskInstalled && !isNetwork">
+    <template v-else-if="isMetaMaskInstalled && !isNetwork">
       <div class="whitespace-nowrap bg-redish/[.6] p-8 rounded-tl-3xl rounded-br-3xl max-w-[400px] mx-auto">
         <div class="text-[30px] uppercase font-bold leading-none text-center">Wrong network</div>
         <div class="text-center text-redish-200">Please switch to Ethereum Mainnet</div>
       </div>
     </template>
-    <template v-if="!isMetaMaskInstalled">
+    <template v-else-if="!isMetaMaskInstalled">
       <div class="whitespace-nowrap bg-redish/[.6] p-8 rounded-tl-3xl rounded-br-3xl max-w-[400px] mx-auto">
         <div class="text-[30px] uppercase font-bold leading-none text-center">No metamask</div>
         <div class="text-center text-redish-200">Install metamask to mint</div>
