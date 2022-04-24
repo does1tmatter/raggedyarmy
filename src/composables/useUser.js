@@ -67,14 +67,19 @@ export const useUser = createSharedComposable(() => {
   }
   
   const loadConnectedUser = async () => {
-    userLoading.value = true
-    await getCurrentUser()
-      .then((res) => loadUserData(res)
-        .then((data) => {
-          setUserData(data)
-          userLoading.value = false
-        })
-      )
+    try {
+      userLoading.value = true
+      await getCurrentUser()
+        .then((res) => loadUserData(res)
+          .then((data) => {
+            setUserData(data)
+            userLoading.value = false
+          })
+        )
+    } catch (error) {
+      console.log(error)
+      userLoading.value = false
+    }
   }
 
   const detectChain = () => getChainId().then(res => chain.value = res)
@@ -88,14 +93,18 @@ export const useUser = createSharedComposable(() => {
   }
 
   const connectUser = async () => {
-    userLoading.value = true
-    await requestAccounts()
-      .then((res) => loadUserData(res)
-        .then((data) => {
-          setUserData(data)
-          userLoading.value = false
-        })
-      )
+    try {
+      userLoading.value = true
+      await requestAccounts()
+        .then((res) => loadUserData(res)
+          .then((data) => {
+            setUserData(data)
+            userLoading.value = false
+          })
+        )
+    } catch (error) {
+      userLoading.value = false
+    }
   }
 
   return {
