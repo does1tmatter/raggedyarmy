@@ -13,9 +13,9 @@ export const useUser = createSharedComposable(() => {
   const ensName = ref(null)
   const ensAvatar = ref(null)
   const username = computed(() => ensName.value || sliceAddress(address.value))
-  const balance = ref(null)
+  const balance = ref(0)
   const chain = ref(null)
-  const ownedTokens = ref(null)
+  const ownedTokens = ref(0)
 
   const userLoading = ref(false)
   const isNetwork = computed(() => Boolean(chain.value === '0x1'))

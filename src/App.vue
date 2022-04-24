@@ -41,7 +41,7 @@ const onChainChanged = (_chain) => {
 }
 
 onMounted(() => {
-  if (isMetaMaskInstalled) {
+  if (isMetaMaskInstalled.value) {
     connectProvider(window.ethereum)
     detectChain().then(() => {
       if (isNetwork.value) { 
@@ -51,12 +51,12 @@ onMounted(() => {
     })
     setListeners(true)
   } else {
-    console.error('Non Ethereum Browser. Please install metamask.')
+    console.error('Non Ethereum Browser. Please install metamask. https://metamask.io/download/')
   }
 })
 
 onUnmounted(() => {
-  if (isMetaMaskInstalled) {
+  if (isMetaMaskInstalled.value) {
     setListeners(false)
   }
 })

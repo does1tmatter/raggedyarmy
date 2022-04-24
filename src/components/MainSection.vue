@@ -15,7 +15,6 @@ const randomBackground = bgArray[randomNumber(2) - 1]
 onMounted(() => {
   setTimeline()
   animateFrom('#home', { scale: 1.8, opacity: 0 })
-  animateTo('.box', { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', y: 0, opacity: 1, duration: 2 }, '-=1.2')
   animateTo('.headline', { opacity: 1, y: 0, duration: 2 }, '-=1.5')
   animateTo('.clip', { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)', y: 0 }, '-=1')
 })
@@ -43,11 +42,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.box {
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  transform: translateY(-200px);
-  opacity: 0;
-}
 .clip {
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
   transform: translateY(3em);

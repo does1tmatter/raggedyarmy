@@ -13,11 +13,12 @@ export const useContract = createSharedComposable(() => {
   const { getProvider, getSigner } = useWallet()
 
   const contractLoading = ref(false)
+  const contractLoaded = ref(false)
 
   let contract = reactive({})
   let wlContract = reactive({})
 
-  const minted = ref(null)
+  const minted = ref(0)
   const owner = ref(null)
   const name = ref(null)
   const symbol = ref(null)
@@ -84,6 +85,7 @@ export const useContract = createSharedComposable(() => {
       contractLoading.value = false
     } finally {
       contractLoading.value = false
+      contractLoaded.value = true
     }
   }
 
@@ -123,6 +125,7 @@ export const useContract = createSharedComposable(() => {
     connectContract,
     mintPublic,
     mintPresale,
-    parseEther
+    parseEther,
+    contractLoaded
   }
 })

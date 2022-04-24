@@ -24,22 +24,22 @@ const isScrolled = computed(() => Boolean(scroll.y.value > 100))
               v-if="!isAuthenticated"
               :disabled="userLoading || !isNetwork || !isMetaMaskInstalled"
               @click="connectUser"
-              class="disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-redish-600 disabled:hover:text-redish-300 bg-redish-600 text-redish-300 rounded-lg p-[10px] hover:bg-redish hover:text-white transition-all"
+              class="disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-redish bg-redish rounded-lg p-[10px] hover:bg-redish-400 transition-all"
             >
               Connect
             </button>
           </Transition>
           <Transition name="fadeout">
-            <button v-if="!isNetwork && isMetaMaskInstalled" class="p-[10px] bg-redish-600 text-redish-300 rounded-lg ml-4 hover:bg-redish hover:text-white transition-all" @click="switchNetwork">
+            <button v-if="!isNetwork && isMetaMaskInstalled" class="p-[10px] bg-redish rounded-lg ml-4 hover:bg-redish-400 transition-all" @click="switchNetwork">
               Switch Network
             </button>
           </Transition>
         </div>
       </div>
-      <div class="cursor-pointer flex gap-6 font-bold uppercase">
+      <div class="cursor-pointer flex gap-6 font-bold uppercase divide-x divide-dashed divide-redish-300/[.3]">
         <a href="#home" class="hover:text-redish-300 transition-all">Home</a>
-        <a href="#mint" class="hover:text-redish-300 transition-all">Mint</a>
-        <a href="#roadmap" class="hover:text-redish-300 transition-all">Roadmap</a>
+        <a href="#mint" class="hover:text-redish-300 transition-all pl-6">Mint</a>
+        <a href="#roadmap" class="hover:text-redish-300 transition-all pl-6">Roadmap</a>
       </div>
     </div>
   </header>
