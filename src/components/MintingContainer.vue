@@ -64,15 +64,15 @@ const success = () => {
     <template v-if="isMetaMaskInstalled && isNetwork">
       <div class="whitespace-nowrap bg-redish/[.6] p-8 rounded-tl-3xl rounded-br-3xl max-w-[400px] mx-auto">
         <template v-if="contractLoading && !contractLoaded">
-          <div class="text-[10vw] sm:text-[30px] uppercase font-bold leading-none text-center">Loading contract</div>
+          <div class="text-[5vw] sm:text-[30px] uppercase font-bold leading-none text-center">Loading contract</div>
           <div class="text-center text-redish-200">Please wait</div>
         </template>
         <template v-else-if="!contractLoading && !contractLoaded">
-          <div class="text-[10vw] sm:text-[30px] uppercase font-bold leading-none text-center">Error</div>
+          <div class="text-[8vw] sm:text-[30px] uppercase font-bold leading-none text-center">Error</div>
           <div class="text-center text-redish-200">Could not connect to contract.</div>
         </template>
         <template v-else-if="!isPresaleOpen && !isPresaleComplete && contractLoaded">
-          <div class="text-[10vw] sm:text-[30px] uppercase font-bold leading-none text-center">Presale</div>
+          <div class="text-[8vw] sm:text-[30px] uppercase font-bold leading-none text-center">Presale</div>
           <div class="text-center mt-4">
             <div class="w-full max-w-[200px] mx-auto flex justify-between">
               <div class="text-left">
@@ -129,7 +129,7 @@ const success = () => {
           </div>
         </template>
         <template v-else-if="isSaleOpen && !isSaleComplete && contractLoaded">
-          <div class="text-[10vw] sm:text-[30px] uppercase font-bold leading-none text-center">Public Sale</div>
+          <div class="text-[8vw] sm:text-[30px] uppercase font-bold leading-none text-center">Public Sale</div>
           <div class="text-center mt-4">
             <div class="w-full max-w-[200px] mx-auto flex justify-between">
               <div class="text-left">
@@ -178,20 +178,20 @@ const success = () => {
           </div>
         </template>
         <template v-else-if="!isPresaleOpen && !isSaleOpen && contractLoaded">
-          <div class="text-[10vw] sm:text-[30px] uppercase font-bold leading-none text-center">Sale closed</div>
+          <div class="text-[8vw] sm:text-[30px] uppercase font-bold leading-none text-center">Sale closed</div>
           <div class="text-center text-redish-200">try again later</div>
         </template>
       </div>
     </template>
     <template v-else-if="isMetaMaskInstalled && !isNetwork">
       <div class="whitespace-nowrap bg-redish/[.6] p-8 rounded-tl-3xl rounded-br-3xl max-w-[400px] mx-auto">
-        <div class="text-[10vw] sm:text-[30px] uppercase font-bold leading-none text-center">Wrong network</div>
+        <div class="text-[6vw] sm:text-[30px] uppercase font-bold leading-none text-center">Wrong network</div>
         <div class="text-center text-redish-200">Please switch to Ethereum Mainnet</div>
       </div>
     </template>
     <template v-else-if="!isMetaMaskInstalled">
       <div class="whitespace-nowrap bg-redish/[.6] p-8 rounded-tl-3xl rounded-br-3xl max-w-[400px] mx-auto">
-        <div class="text-[10vw] sm:text-[30px] uppercase font-bold leading-none text-center">No metamask</div>
+        <div class="text-[6vw] sm:text-[30px] uppercase font-bold leading-none text-center">No metamask</div>
         <div class="text-center text-redish-200">Install metamask to mint</div>
       </div>
     </template>

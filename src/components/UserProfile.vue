@@ -39,7 +39,7 @@ const toggleUserData = (e) => {
       </span>
     </button>
     <Transition name="slide-profile">
-      <div v-if="openUserData && isAuthenticated" class="z-50 absolute w-full mt-2 bg-redish-400 p-2 rounded-md text-[11px] uppercase leading-none flex justify-between whitespace-nowrap">
+      <div v-if="openUserData && isAuthenticated" class="z-50 absolute w-full mt-2 bg-redish-400 p-2 rounded-md text-[10px] sm:text-[11px] uppercase leading-none flex justify-between whitespace-nowrap">
         <div class="absolute -top-1 w-0 h-0 border-b-[5px] border-x-[5px] border-b-redish-400 border-x-transparent">
         </div>
         <div class="text-white">
