@@ -90,19 +90,17 @@ const success = () => {
             </div>
             <div class="font-black text-[30px] flex justify-center gap-6 mt-2">
               <button
-                :class="
-                  isMinCount ? 'cursor-not-allowed px-4 border border-redish-300 transition-all rounded-lg' : 'cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg'
-                "
-                @click="isMinCount ? '' : count--"
+                :disabled="isMinCount"
+                class="disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg"
+                @click="count--"
               >
                 -
               </button>
               <span>{{ count }}</span>
               <button
-                :class="
-                  isMaxCount ? 'cursor-not-allowed px-4 border border-redish-300 transition-all rounded-lg' : 'cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg'
-                "
-                @click="isMaxCount ? '' : count++"
+                :disabled="isMaxCount"
+                class="disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg"
+                @click="count++"
               >
                 +
               </button>
@@ -145,9 +143,8 @@ const success = () => {
             </div>
             <div class="font-black text-[30px] flex justify-center gap-6 mt-2">
               <button
-                :class="
-                  isMinCount ? 'cursor-not-allowed px-4 border border-redish-300 transition-all rounded-lg' : 'cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg'
-                "
+                :disabled="isMinCount"
+                class="disabled:cursor-not-allowed disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer px-4 border border-redish-300 hover:bg-redish-300 transition-all rounded-lg"
                 @click="isMinCount ? '' : count--"
               >
                 -
