@@ -34,7 +34,7 @@ const toggleUserData = (e) => {
       <div class="w-[20px] bg-redish-300 rounded-full flex items-center justify-center overflow-hidden pointer-events-none">
         <img :src="avatarString">
       </div>
-      <span class="whitespace-nowrap pointer-events-none">
+      <span class="whitespace-nowrap pointer-events-none text-[12px] sm:text-base">
         {{ userLoading ? 'Loading' : usernameString }}
       </span>
     </button>
