@@ -1,4 +1,4 @@
-import { ref, computed, reactive } from 'vue'
+import { reactive } from 'vue'
 import { createSharedComposable } from '@vueuse/core'
 import { gsap } from 'gsap'
 
